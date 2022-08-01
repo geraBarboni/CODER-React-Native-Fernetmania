@@ -34,10 +34,9 @@ const styles = StyleSheet.create({
     marginRight: 2,
     marginTop: 1,
     marginBottom: 1,
-    backgroundColor: colors.blackTwo,
+    backgroundColor: colors.black,
   },
   image: {
-    backgroundColor: 'red',
     height: Dimensions.get('window').width / 1,
     resizeMode: 'cover',
   },
@@ -45,8 +44,10 @@ const styles = StyleSheet.create({
     marginTop: 20,
     fontSize: 20,
     fontFamily: 'OpenSans',
+    color: colors.secondary,
   },
   details: {
     fontSize: 18,
+    color: colors.blackTwo,
   },
 });

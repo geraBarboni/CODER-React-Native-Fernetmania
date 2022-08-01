@@ -5,6 +5,8 @@ export const FERNETS = [
     autor: 'Kion',
     category: 1,
     uri: 'https://t3.ftcdn.net/jpg/04/33/36/14/360_F_433361452_bwuYn79oAdKf4bEpvvgpYTy6Ka0kuflM.jpg',
+    desc: 'Lorem Ipsum',
+    ubication: 'la casa del tio',
   },
   {
     id: 2,
@@ -12,6 +14,8 @@ export const FERNETS = [
     autor: 'el mono Mario',
     category: 2,
     uri: 'https://t3.ftcdn.net/jpg/04/33/36/14/360_F_433361452_bwuYn79oAdKf4bEpvvgpYTy6Ka0kuflM.jpg',
+    desc: 'Lorem Ipsum',
+    ubication: 'la casa del tio',
   },
   {
     id: 3,
@@ -19,6 +23,8 @@ export const FERNETS = [
     autor: 'la flaca Marta',
     category: 3,
     uri: 'https://t3.ftcdn.net/jpg/04/33/36/14/360_F_433361452_bwuYn79oAdKf4bEpvvgpYTy6Ka0kuflM.jpg',
+    desc: 'Lorem Ipsum',
+    ubication: 'la casa del tio',
   },
   {
     id: 4,
@@ -26,6 +32,8 @@ export const FERNETS = [
     autor: 'el cara lisa',
     category: 4,
     uri: 'https://t3.ftcdn.net/jpg/04/33/36/14/360_F_433361452_bwuYn79oAdKf4bEpvvgpYTy6Ka0kuflM.jpg',
+    desc: 'Lorem Ipsum',
+    ubication: 'la casa del tio',
   },
   {
     id: 5,
@@ -33,6 +41,8 @@ export const FERNETS = [
     autor: 'Kion',
     category: 1,
     uri: 'https://t3.ftcdn.net/jpg/04/33/36/14/360_F_433361452_bwuYn79oAdKf4bEpvvgpYTy6Ka0kuflM.jpg',
+    desc: 'Lorem Ipsum',
+    ubication: 'la casa del tio',
   },
   {
     id: 6,
@@ -40,6 +50,8 @@ export const FERNETS = [
     autor: 'el mono Mario',
     category: 2,
     uri: 'https://t3.ftcdn.net/jpg/04/33/36/14/360_F_433361452_bwuYn79oAdKf4bEpvvgpYTy6Ka0kuflM.jpg',
+    desc: 'Lorem Ipsum',
+    ubication: 'la casa del tio',
   },
   {
     id: 7,
@@ -47,6 +59,8 @@ export const FERNETS = [
     autor: 'la flaca Marta',
     category: 3,
     uri: 'https://t3.ftcdn.net/jpg/04/33/36/14/360_F_433361452_bwuYn79oAdKf4bEpvvgpYTy6Ka0kuflM.jpg',
+    desc: 'Lorem Ipsum',
+    ubication: 'la casa del tio',
   },
   {
     id: 8,
@@ -54,5 +68,7 @@ export const FERNETS = [
     autor: 'el cara lisa',
     category: 4,
     uri: 'https://t3.ftcdn.net/jpg/04/33/36/14/360_F_433361452_bwuYn79oAdKf4bEpvvgpYTy6Ka0kuflM.jpg',
+    desc: 'Lorem Ipsum',
+    ubication: 'la casa del tio',
   },
 ];

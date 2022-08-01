@@ -9,7 +9,7 @@ const CategoryFernetScreen = ({ navigation, route }) => {
   );
 
   const handleSelected = (item) => {
-    navigation.navigate('NewFernet', {
+    navigation.navigate('Detail', {
       fernet: item,
     });
   };

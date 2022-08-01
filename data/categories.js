@@ -9,10 +9,10 @@ export const CATEGORIES = [
   },
   {
     id: 3,
-    title: 'puro',
+    title: 'puraso',
   },
   {
     id: 4,
-    title: 'fino',
+    title: 'cheto',
   },
 ];

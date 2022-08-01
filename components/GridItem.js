@@ -29,8 +29,8 @@ const styles = StyleSheet.create({
   gridItem: {
     flex: 1,
     margin: 1,
-    backgroundColor: colors.blackTwo,
-    width: Dimensions.get('window').width / 2.02,
+    backgroundColor: colors.black,
+    maxWidth: Dimensions.get('window').width / 2.02,
     height: Dimensions.get('window').width / 2.02,
   },
   container: {

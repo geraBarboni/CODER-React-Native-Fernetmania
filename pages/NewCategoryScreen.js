@@ -17,31 +17,11 @@ const NewCategoryScreen = () => {
   return (
     <View style={styles.container}>
       <View>
-        <Text>Titulo</Text>
+        <Text>Categoria</Text>
         <TextInput
           onFocus={() => setBorderColor(colors.secondary)}
           style={{ ...styles.input, borderColor }}
         />
-      </View>
-      <View>
-        <Text>Autor</Text>
-        <TextInput
-          onFocus={() => setBorderColor(colors.secondary)}
-          style={{ ...styles.input, borderColor }}
-        />
-      </View>
-      <View>
-        <Text>Descripcion</Text>
-        <TextInput
-          onFocus={() => setBorderColor(colors.secondary)}
-          style={{ ...styles.input, borderColor }}
-        />
-      </View>
-      <View>
-        <Text>Lugar</Text>
-        <TouchableOpacity style={styles.addFile}>
-          <Ionicons name="location-outline" size={27} color={colors.blackTwo} />
-        </TouchableOpacity>
       </View>
       <View>
         <Text>Imagen</Text>
@@ -50,7 +30,7 @@ const NewCategoryScreen = () => {
         </TouchableOpacity>
       </View>
       <TouchableOpacity style={styles.addCategory}>
-        <Ionicons name="add" size={27} color={colors.blackTwo} />
+        <Ionicons name="duplicate-outline" size={27} color={colors.blackTwo} />
       </TouchableOpacity>
     </View>
   );
@@ -83,6 +63,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'black',
     alignItems: 'center',
     justifyContent: 'center',
-    marginVertical: 20,
+    marginVertical: 10,
   },
 });
