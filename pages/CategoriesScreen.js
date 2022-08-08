@@ -2,19 +2,23 @@ import React from 'react';
 import {
   StyleSheet,
   FlatList,
-  View,
-  Text,
   TouchableOpacity,
   Dimensions,
   SafeAreaView,
 } from 'react-native';
-import { CATEGORIES } from '../data/categories';
 import GridItem from '../components/GridItem';
 import colors from '../constants/colors';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
+import { useSelector, useDispatch } from 'react-redux';
+import { selectCategory } from '../store/actions/category.action';
+
 const CategoriesScreen = ({ navigation }) => {
+  const categories = useSelector((state) => state.categories.categories);
+  const dispatch = useDispatch();
+
   const handleSelectedCategory = (item) => {
+    dispatch(selectCategory(item.id));
     navigation.navigate('MyFernets', {
       categoryID: item.id,
       name: item.title,
@@ -29,7 +33,7 @@ const CategoriesScreen = ({ navigation }) => {
     <SafeAreaView style={styles.container}>
       <FlatList
         style={styles.FlatList}
-        data={CATEGORIES}
+        data={categories}
         keyExtractor={(item) => item.id}
         renderItem={renderGridItem}
         numColumns={2}

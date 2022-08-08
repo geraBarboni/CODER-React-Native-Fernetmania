@@ -1,14 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FlatList, StyleSheet } from 'react-native';
-import { FERNETS } from '../data/fernets';
 import FernetItem from '../components/FernetItem';
 
-const CategoryFernetScreen = ({ navigation, route }) => {
-  const fernets = FERNETS.filter(
-    (fernet) => fernet.category === route.params.categoryID
-  );
+import { useSelector, useDispatch } from 'react-redux';
+import { filteredFernet, selectFernet } from '../store/actions/fernet.action';
+
+const CategoryFernetScreen = ({ navigation }) => {
+  const dispatch = useDispatch();
+  const categoryFernets = useSelector((state) => state.fernets.filteredFernet);
+  const category = useSelector((state) => state.categories.selected);
+
+  useEffect(() => {
+    dispatch(filteredFernet(category.id));
+  }, []);
 
   const handleSelected = (item) => {
+    dispatch(selectFernet(item.id));
     navigation.navigate('Detail', {
       fernet: item,
     });
@@ -21,7 +28,7 @@ const CategoryFernetScreen = ({ navigation, route }) => {
   return (
     <FlatList
       style={styles.FlatList}
-      data={fernets}
+      data={categoryFernets}
       keyExtractor={(item) => item.id}
       renderItem={renderItemFernet}
     />
