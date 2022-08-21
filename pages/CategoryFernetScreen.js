@@ -4,6 +4,7 @@ import FernetItem from '../components/FernetItem';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { filteredFernet, selectFernet } from '../store/actions/fernet.action';
+import { useState } from 'react';
 
 const CategoryFernetScreen = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -12,7 +13,7 @@ const CategoryFernetScreen = ({ navigation }) => {
 
   useEffect(() => {
     dispatch(filteredFernet(category.id));
-  }, []);
+  }, []); 
 
   const handleSelected = (item) => {
     dispatch(selectFernet(item.id));

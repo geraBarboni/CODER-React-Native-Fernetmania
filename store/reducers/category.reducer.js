@@ -1,8 +1,9 @@
-import { CATEGORIES } from '../../data/categories';
+import { CATEGORIES } from '../../data/categories.js';
+import { URL_API } from '../../constants/DataBase';
 import { SELECT_CATEGORY } from '../actions/category.action';
 
 const initialState = {
-  categories: CATEGORIES,
+  categories: CATEGORIES(),
   selected: null,
 };
 

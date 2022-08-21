@@ -1,11 +1,12 @@
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 
-import CategoryReducer from './reducers/category.reducer';
+import categoriesReducer from './reducers/category.reducer';
 import FernetReducer from './reducers/fernets.reducer';
 
 const RootReducer = combineReducers({
-  categories: CategoryReducer,
+  categories: categoriesReducer,
   fernets: FernetReducer,
 });
 
-export default createStore(RootReducer);
+export default createStore(RootReducer, applyMiddleware(thunk));

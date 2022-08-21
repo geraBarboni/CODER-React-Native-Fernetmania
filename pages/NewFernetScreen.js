@@ -7,34 +7,40 @@ import {
   Dimensions,
   TextInput,
   TouchableOpacity,
+  FlatList,
 } from 'react-native';
 
 import colors from '../constants/colors';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import FernetItem from '../components/FernetItem';
+import { useSelector } from 'react-redux';
 
 const NewCategoryScreen = () => {
-  const [borderColor, setBorderColor] = useState();
+  const [title, setTitle] = useState();
+  const [autor, setAutor] = useState();
+  const [desc, setDesc] = useState();
+
   return (
     <View style={styles.container}>
       <View>
         <Text>Titulo</Text>
         <TextInput
-          onFocus={() => setBorderColor(colors.secondary)}
-          style={{ ...styles.input, borderColor }}
+          style={{ ...styles.input }}
+          onChangeText={(text) => setTitle(text)}
         />
       </View>
       <View>
         <Text>Autor</Text>
         <TextInput
-          onFocus={() => setBorderColor(colors.secondary)}
-          style={{ ...styles.input, borderColor }}
+          style={{ ...styles.input }}
+          onChangeText={(text) => setAutor(text)}
         />
       </View>
       <View>
         <Text>Descripcion</Text>
         <TextInput
-          onFocus={() => setBorderColor(colors.secondary)}
-          style={{ ...styles.input, borderColor }}
+          style={{ ...styles.input }}
+          onChangeText={(text) => setDesc(text)}
         />
       </View>
       <View>
@@ -49,7 +55,12 @@ const NewCategoryScreen = () => {
           <Ionicons name="image-outline" size={27} color={colors.blackTwo} />
         </TouchableOpacity>
       </View>
-      <TouchableOpacity style={styles.addCategory}>
+      <TouchableOpacity
+        style={styles.addCategory}
+        onPress={() => {
+          console.log(title, autor, desc);
+        }}
+      >
         <Ionicons name="add" size={27} color={colors.blackTwo} />
       </TouchableOpacity>
     </View>
@@ -86,3 +97,9 @@ const styles = StyleSheet.create({
     marginVertical: 20,
   },
 });
+
+/*
+
+
+
+*/

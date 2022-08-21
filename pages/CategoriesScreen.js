@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   StyleSheet,
   FlatList,
@@ -12,10 +12,16 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { selectCategory } from '../store/actions/category.action';
+import { getCategories } from '../store/actions/categories.action';
 
 const CategoriesScreen = ({ navigation }) => {
-  const categories = useSelector((state) => state.categories.categories);
   const dispatch = useDispatch();
+  const categories = useSelector((state) => state.categories);
+  console.log('categories desde screen: ', categories);
+
+  useEffect(() => {
+    dispatch(getCategories());
+  }, []);
 
   const handleSelectedCategory = (item) => {
     dispatch(selectCategory(item.id));
@@ -37,6 +43,7 @@ const CategoriesScreen = ({ navigation }) => {
         keyExtractor={(item) => item.id}
         renderItem={renderGridItem}
         numColumns={2}
+        //onRefresh={() => dispatch(getCategories())}
       />
       <TouchableOpacity
         onPress={() => navigation.navigate('NewCategory')}
