@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   StyleSheet,
   FlatList,
@@ -19,10 +19,14 @@ import images from '../assets/images.jpg';
 const AllFernetsScreen = ({ navigation }) => {
   const dispatch = useDispatch();
   const Allfernets = useSelector((store) => store.fernets.fernets);
-  const fernets = Object.values(Allfernets);
+
+  const [fernets, setfernets] = useState([]);
 
   useEffect(() => {
     dispatch(getFernets());
+  }, []);
+  useEffect(() => {
+    Allfernets != null ? setfernets(Object.values(Allfernets)) : setfernets([]);
   }, []);
 
   const handleSelected = (item) => {
@@ -38,7 +42,7 @@ const AllFernetsScreen = ({ navigation }) => {
 
   return (
     <>
-      {fernets?.length > 0 ? (
+      {fernets?.length > 0 || fernets === null ? (
         <FlatList
           style={styles.FlatList}
           data={fernets}
