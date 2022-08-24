@@ -1,30 +1,19 @@
-import { FERNETS } from '../../data/fernets';
-import { FILTERED_FERNET, SELECT_FERNET } from '../actions/fernet.action';
+import { FERNETS } from '../actions/fernets.actions';
 
 const initialState = {
-  fernets: FERNETS,
-  filteredFernet: [],
-  selected: null,
+  fernets: [],
 };
 
-const FernetReducer = (state = initialState, action) => {
+const fernetsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SELECT_FERNET:
+    case FERNETS:
       return {
         ...state,
-        selected: state.fernets.find((fernet) => fernet.id === action.fernetID),
-      };
-
-    case FILTERED_FERNET:
-      return {
-        ...state,
-        filteredFernet: state.fernets.filter(
-          (fernet) => fernet.category === action.categoryID
-        ),
+        fernets: action.payload,
       };
     default:
       return state;
   }
 };
 
-export default FernetReducer;
+export default fernetsReducer;

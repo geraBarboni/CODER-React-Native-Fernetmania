@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, Text, StyleSheet, Image, Dimensions } from 'react-native';
 import colors from '../constants/colors';
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectFernet } from '../store/actions/fernet.action';
 
 const DetailFernetScreen = () => {
-  const fernet = useSelector((state) => state.fernets.selected);
+  const fernet = useSelector((state) => state.fernet.fernet);
+
   return (
     <View style={styles.screen}>
       <View style={styles.fernetItem}>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View,
   StyleSheet,
@@ -13,12 +13,45 @@ import {
 import colors from '../constants/colors';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import FernetItem from '../components/FernetItem';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import ImageSelector from '../components/ImageSelector';
 
-const NewCategoryScreen = () => {
-  const [title, setTitle] = useState();
-  const [autor, setAutor] = useState();
-  const [desc, setDesc] = useState();
+import { addPlublication } from '../store/actions/publication.action';
+
+const NewFernetScreen = ({ navigation }) => {
+  const dispatch = useDispatch();
+
+  const [title, setTitle] = useState('');
+  const [autor, setAutor] = useState('');
+  const [desc, setDesc] = useState('');
+  const [ubication, setUbication] = useState('');
+  const [image, setImage] = useState('');
+  const [disabled, setDisabled] = useState(true);
+
+  useEffect(() => {
+    if (title && autor && image != '') {
+      setDisabled(!disabled);
+    }
+  }, [title, autor, image]);
+
+  const handlepublication = () => {
+    const publication = {
+      id: Date.now(),
+      desc: desc,
+      autor: autor,
+      name: title,
+      //uri: 'https://scontent.fcor11-1.fna.fbcdn.net/v/t1.6435-9/82258869_831134407309008_939405537722761216_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=a26aad&_nc_eui2=AeGAHIUtMDzuRpPsSghCAgAm2S_OvTwFRQvZL869PAVFC9SgxgY5sO7xgeFvSfLnsScKdvgrpKvFHxRu-8XdTco5&_nc_ohc=HM2eiD82EU4AX_s6-oo&_nc_ht=scontent.fcor11-1.fna&oh=00_AT_hK9Tj1446QgnFNf4Rzijhj0PlAJsjixCrmNukYrWveQ&oe=632BE99F',
+      uri: image,
+      ubication: ubication,
+    };
+    dispatch(addPlublication(publication));
+    setTitle('');
+    setAutor('');
+    setDesc('');
+    setUbication('');
+    setImage('');
+    navigation.navigate('DiaryTab');
+  };
 
   return (
     <View style={styles.container}>
@@ -45,20 +78,20 @@ const NewCategoryScreen = () => {
       </View>
       <View>
         <Text>Lugar</Text>
-        <TouchableOpacity style={styles.addFile}>
-          <Ionicons name="location-outline" size={27} color={colors.blackTwo} />
-        </TouchableOpacity>
+        <TextInput
+          style={{ ...styles.input }}
+          onChangeText={(text) => setUbication(text)}
+        />
       </View>
       <View>
         <Text>Imagen</Text>
-        <TouchableOpacity style={styles.addFile}>
-          <Ionicons name="image-outline" size={27} color={colors.blackTwo} />
-        </TouchableOpacity>
+        <ImageSelector onImage={(image) => setImage(image)} />
       </View>
       <TouchableOpacity
-        style={styles.addCategory}
+        style={styles.addFernet}
+        disabled={disabled}
         onPress={() => {
-          console.log(title, autor, desc);
+          handlepublication();
         }}
       >
         <Ionicons name="add" size={27} color={colors.blackTwo} />
@@ -67,7 +100,7 @@ const NewCategoryScreen = () => {
   );
 };
 
-export default NewCategoryScreen;
+export default NewFernetScreen;
 
 const styles = StyleSheet.create({
   container: {
@@ -89,7 +122,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginVertical: 10,
   },
-  addCategory: {
+  addFernet: {
     height: Dimensions.get('window').height / 20,
     backgroundColor: 'black',
     alignItems: 'center',

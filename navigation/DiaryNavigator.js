@@ -1,16 +1,14 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import CategoriesScreen from '../pages/CategoriesScreen';
-import CategoryFernetScreen from '../pages/CategoryFernetScreen';
+import AllFernetsScreen from '../pages/AllFernetsScreen';
 import DetailFernetScreen from '../pages/DetailFernetScreen';
 
 import Colors from '../constants/colors';
-import NewCategoryScreen from '../pages/NewCategoryScreen';
 
 const Stack = createNativeStackNavigator();
 
-const ShopNavigator = () => (
+const DiaryNavigator = () => (
   <Stack.Navigator
     initialRouteName="Home"
     screenOptions={{
@@ -28,15 +26,8 @@ const ShopNavigator = () => (
   >
     <Stack.Screen
       name="Home"
-      component={CategoriesScreen}
-      options={{ title: 'Todo esto te mamaste' }}
-    />
-    <Stack.Screen
-      name="MyFernets"
-      component={CategoryFernetScreen}
-      options={({ route }) => ({
-        title: 'Los que salieron ' + route.params.name,
-      })}
+      component={AllFernetsScreen}
+      options={{ title: 'Mi queridísimo diario' }}
     />
     <Stack.Screen
       name="Detail"
@@ -45,12 +36,7 @@ const ShopNavigator = () => (
         title: route.params.fernet.name + ' de ' + route.params.fernet.autor,
       })}
     />
-    <Stack.Screen
-      name="NewCategory"
-      component={NewCategoryScreen}
-      options={{ title: 'Como salio eso?' }}
-    />
   </Stack.Navigator>
 );
 
-export default ShopNavigator;
+export default DiaryNavigator;

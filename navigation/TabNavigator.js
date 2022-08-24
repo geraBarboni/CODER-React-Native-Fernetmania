@@ -4,7 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import colors from '../constants/colors';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
-import ShopNavigator from './ShopNavigation';
+import DiaryNavigator from './DiaryNavigator';
 import NewFernetNavigator from './NewFernetNavigator';
 
 const BottomTabs = createBottomTabNavigator();
@@ -18,8 +18,8 @@ const TabNavigator = () => (
     }}
   >
     <BottomTabs.Screen
-      name="ShopTab"
-      component={ShopNavigator}
+      name="DiaryTab"
+      component={DiaryNavigator}
       options={{
         tabBarIcon: ({ focused }) => (
           <Ionicons
