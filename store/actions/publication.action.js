@@ -1,7 +1,9 @@
-import * as FileSystem from 'expo-file-system';
 import { URL_API } from '../../constants/DataBase';
 
+import { insertPublication, fetchPublication } from '../../db';
+
 export const ADD_PUBLICATION = 'ADD_PUBLICATION';
+export const LOAD_PUBLICATION = 'LOAD_PUBLICATION';
 
 export const addPlublication = (publication) => {
   return async (dispatch) => {
@@ -13,54 +15,44 @@ export const addPlublication = (publication) => {
         },
         body: JSON.stringify(publication),
       });
-      console.log(response);
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
+      console.log('ESTO SE SUBIO A FIREBASE: ', response);
 
-  return function (dispatch) {
-    console.log('desde el action: ', publication);
-    return dispatch({
-      type: ADD_PUBLICATION,
-      publication: publication,
-    });
-  };
+      const result = await insertPublication(
+        publication.id,
+        publication.desc,
+        publication.autor,
+        publication.name,
+        publication.uri,
+        publication.ubication
+      );
 
-  /*
-  curl -X PUT -d '{ "first": "Jack", "last": "Sparrow" }' \
-  'https://[PROJECT_ID].firebaseio.com/users/jack/name.json'
-
-
-  /*
-  return async (dispatch) => {
-    const fileName = publication.image.split('/').pop();
-    const Path = FileSystem.documentDirectory + fileName;
-    try {
-      await FileSystem.moveAsync({
-        from: image,
-        to: Path,
+      dispatch({
+        type: ADD_PUBLICATION,
+        publication: {
+          id: result.id,
+          desc: result.desc,
+          autor: result.autor,
+          name: result.name,
+          uri: result.uri,
+          ubication: result.ubication,
+        },
       });
     } catch (error) {
       console.log(error.message);
+    }
+  };
+};
+
+export const loadPublication = () => {
+  return async (dispatch) => {
+    try {
+      const result = await fetchPublication();
+      console.log('esto tendria que cargar las publicaciones', result);
+      const publicationsArray = result.rows._array;
+      dispatch({ type: LOAD_PUBLICATION, publications: publicationsArray });
+    } catch (error) {
+      console.log('fallo el loadPublication ACTION: ', error.message);
       throw error;
     }
-    dispatch({
-      type: ADD_PLACE,
-      payload: {
-        id,
-        category,
-        desc,
-        autor,
-        name,
-        uri: Path,
-        ubication: {
-          name: action.payload.address,
-          lat: action.payload.lat,
-          lng: action.payload.lng,
-        },
-      },
-    });
   };
-  */
 };
