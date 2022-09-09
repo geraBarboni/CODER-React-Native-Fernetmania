@@ -40,7 +40,6 @@ const NewFernetScreen = ({ navigation }) => {
       desc: desc,
       autor: autor,
       name: title,
-      //uri: 'https://scontent.fcor11-1.fna.fbcdn.net/v/t1.6435-9/82258869_831134407309008_939405537722761216_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=a26aad&_nc_eui2=AeGAHIUtMDzuRpPsSghCAgAm2S_OvTwFRQvZL869PAVFC9SgxgY5sO7xgeFvSfLnsScKdvgrpKvFHxRu-8XdTco5&_nc_ohc=HM2eiD82EU4AX_s6-oo&_nc_ht=scontent.fcor11-1.fna&oh=00_AT_hK9Tj1446QgnFNf4Rzijhj0PlAJsjixCrmNukYrWveQ&oe=632BE99F',
       uri: image,
       ubication: ubication,
     };

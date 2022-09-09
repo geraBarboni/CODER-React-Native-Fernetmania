@@ -14,19 +14,18 @@ import FernetItem from '../components/FernetItem';
 import { selectFernet } from '../store/actions/fernet.action';
 import colors from '../constants/colors';
 
+import { loadPublication } from '../store/actions/publication.action';
+
 import images from '../assets/images.jpg';
 
 const AllFernetsScreen = ({ navigation }) => {
   const dispatch = useDispatch();
-  const Allfernets = useSelector((store) => store.fernets.fernets);
+  const Allfernets = useSelector((store) => store.publications.publications);
 
   const [fernets, setfernets] = useState([]);
 
   useEffect(() => {
-    dispatch(getFernets());
-  }, []);
-  useEffect(() => {
-    Allfernets != null ? setfernets(Object.values(Allfernets)) : setfernets([]);
+    dispatch(loadPublication());
   }, []);
 
   const handleSelected = (item) => {
@@ -42,10 +41,10 @@ const AllFernetsScreen = ({ navigation }) => {
 
   return (
     <>
-      {fernets?.length > 0 || fernets === null ? (
+      {Allfernets?.length > 0 || Allfernets === null ? (
         <FlatList
           style={styles.FlatList}
-          data={fernets}
+          data={Allfernets}
           keyExtractor={(item) => item.id}
           renderItem={renderItemFernet}
           numColumns={1}

@@ -6,6 +6,15 @@ import MainNavigation from './navigation';
 import { Provider } from 'react-redux';
 import store from './store';
 
+import { init } from './db';
+
+init()
+  .then(() => console.log('database initialized'))
+  .catch((err) => {
+    console.log('database fail connect');
+    console.log(err.message);
+  });
+
 export default function App() {
   const [loaded] = useFonts({
     OpenSans: require('./assets/fonts/OpenSans.ttf'),
